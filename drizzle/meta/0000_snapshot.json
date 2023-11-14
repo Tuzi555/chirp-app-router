@@ -1,56 +1,56 @@
 {
-    "id": "00000000-0000-0000-0000-000000000000",
-    "prevId": "",
-    "version": "5",
-    "dialect": "pg",
-    "tables": {
-        "Post": {
-            "name": "Post",
-            "schema": "",
-            "columns": {
-                "id": {
-                    "name": "id",
-                    "type": "serial",
-                    "primaryKey": true,
-                    "notNull": true
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "type": "timestamp(3)",
-                    "primaryKey": false,
-                    "notNull": true,
-                    "default": "CURRENT_TIMESTAMP"
-                },
-                "content": {
-                    "name": "content",
-                    "type": "varchar(255)",
-                    "primaryKey": false,
-                    "notNull": true
-                },
-                "authorId": {
-                    "name": "authorId",
-                    "type": "text",
-                    "primaryKey": false,
-                    "notNull": true
-                }
-            },
-            "indexes": {
-                "Post_authorId_idx": {
-                    "name": "Post_authorId_idx",
-                    "columns": ["authorId"],
-                    "isUnique": false
-                }
-            },
-            "foreignKeys": {},
-            "compositePrimaryKeys": {},
-            "uniqueConstraints": {}
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "Post": {
+      "name": "Post",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp(3)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "content": {
+          "name": "content",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "authorId": {
+          "name": "authorId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         }
-    },
-    "enums": {},
-    "schemas": {},
-    "_meta": {
-        "schemas": {},
-        "tables": {},
-        "columns": {}
+      },
+      "indexes": {
+        "Post_authorId_idx": {
+          "name": "Post_authorId_idx",
+          "columns": ["authorId"],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
     }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
 }
