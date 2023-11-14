@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { NavigationMenu, NavigationMenuList } from '@/components/ui/navigation-menu';
 import { DarkModeToggle } from '@/components/dark-mode-toggle';
 import { Header } from '@/components/header';
+import { clsx } from 'clsx';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,12 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={clsx(inter.className, 'flex h-screen flex-col')}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <Header/>
-            <main className="flex h-screen justify-center">
-              <div className="h-full w-full overflow-y-auto md:max-w-2xl">{children}</div>
-            </main>
+            <Header />
+            <main className="flex overflow-hidden justify-center">{children}</main>
           </ThemeProvider>
         </body>
       </html>
