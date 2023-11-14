@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
+import { ThemeProvider } from '@/components/theme-provider';
+import { NavigationMenu, NavigationMenuList } from '@/components/ui/navigation-menu';
+import { DarkModeToggle } from '@/components/dark-mode-toggle';
+import { Header } from '@/components/header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,9 +19,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <main className="flex h-screen justify-center">
-            <div className="h-full w-full overflow-y-auto border-x md:max-w-2xl">{children}</div>
-          </main>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <Header/>
+            <main className="flex h-screen justify-center">
+              <div className="h-full w-full overflow-y-auto md:max-w-2xl">{children}</div>
+            </main>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
