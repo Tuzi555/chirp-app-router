@@ -1,18 +1,20 @@
-import { db } from '@/database/db';
-import { sql } from 'drizzle-orm';
-import { SelectPost } from '@/database/schema';
+import { getPosts } from '@/database/repository/post';
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 
 export default async function Home() {
-  const post = (
-    await db.execute(sql`
-      SELECT *
-      FROM "Post"
-      ORDER BY "createdAt" DESC LIMIT 1
-  `)
-  )[0] as SelectPost;
+  const posts = await getPosts();
+
   return (
-    <div className="flex justify-center">
-      <h1>Hello from app router {post.content}</h1>
+    <div className="flex flex-col gap-3 m-4">
+      {posts.map((postWithUser) => (
+        <Card className="flex flex-row p-4" key={postWithUser.post.id}>
+          <Avatar>
+            <AvatarImage src={postWithUser.author.profileImageUrl} alt={postWithUser.author.username} />
+          </Avatar>
+          <CardContent>{postWithUser.post.content}</CardContent>
+        </Card>
+      ))}
     </div>
   );
 }

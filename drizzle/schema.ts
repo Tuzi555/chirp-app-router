@@ -1,7 +1,5 @@
 import { pgTable, index, serial, timestamp, varchar, text } from 'drizzle-orm/pg-core';
 
-import { sql } from 'drizzle-orm';
-
 export const post = pgTable(
   'Post',
   {
