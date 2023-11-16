@@ -1,11 +1,14 @@
 'use server';
 
-import { db } from '@/database/db';
+import { db } from '@/server/database/db';
 import { sql } from 'drizzle-orm';
-import { SelectPost } from '@/database/schema';
-import { clerkClient } from '@clerk/nextjs';
+import { SelectPost } from '@/server/database/schema';
+import { auth, clerkClient } from '@clerk/nextjs';
+import { z } from 'zod';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
-type PostWithAuthor = {
+export type PostWithAuthor = {
   post: {
     id: number;
     createdAt: string;
@@ -16,12 +19,14 @@ type PostWithAuthor = {
     profileImageUrl: string;
   };
 };
+
 export async function getPosts() {
   const postsPromise = db.execute(sql`
-      SELECT *
-      FROM "Post"
-      ORDER BY "createdAt" DESC LIMIT 100
-  `);
+        SELECT *
+        FROM "Post"
+        ORDER BY "createdAt" DESC
+        LIMIT 100
+    `);
 
   const usersPromise = clerkClient.users.getUserList();
 
@@ -43,4 +48,12 @@ export async function getPosts() {
       }
     } as PostWithAuthor;
   });
+}
+
+export async function createPost(content: string, authorId: string) {
+  const post = await db.execute(sql`
+        INSERT INTO "Post" ("content", "authorId")
+        VALUES (${content}, ${authorId})
+        RETURNING *
+    `);
 }

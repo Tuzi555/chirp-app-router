@@ -3,7 +3,7 @@ import { DarkModeToggle } from '@/components/dark-mode-toggle';
 export const Header = () => {
   return (
     <header className="h-auto w-full py-4 text-center">
-      <div className="flex items-center justify-between space-x-3 px-4">
+      <div className="flex items-center justify-between space-x-3 px-4 md:mx-12 lg:mx-36 xl:mx-48 2xl:mx-64">
         <DarkModeToggle />
         <div className="flex flex-row gap-3">
           <a aria-label="Link to site author's github profile" href="https://github.com/Tuzi555">
