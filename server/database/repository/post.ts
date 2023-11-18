@@ -1,12 +1,7 @@
-'use server';
-
 import { db } from '@/server/database/db';
 import { sql } from 'drizzle-orm';
-import { SelectPost } from '@/server/database/schema';
-import { auth, clerkClient } from '@clerk/nextjs';
-import { z } from 'zod';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+import { post, SelectPost } from '@/server/database/schema';
+import { clerkClient } from '@clerk/nextjs';
 
 export type PostWithAuthor = {
   post: {
@@ -51,9 +46,5 @@ export async function getPosts() {
 }
 
 export async function createPost(content: string, authorId: string) {
-  const post = await db.execute(sql`
-        INSERT INTO "Post" ("content", "authorId")
-        VALUES (${content}, ${authorId})
-        RETURNING *
-    `);
+  await db.insert(post).values({content: content, authorId: authorId});
 }

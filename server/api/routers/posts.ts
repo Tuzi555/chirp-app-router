@@ -1,8 +1,6 @@
 import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
 import { z } from 'zod';
 import { createPost } from '@/server/database/repository/post';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 
 export const postsRouter = createTRPCRouter({
   createPost: publicProcedure
@@ -18,7 +16,5 @@ export const postsRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const authorId = ctx.userId!;
       await createPost(input.content, authorId);
-      revalidatePath('/');
-      redirect('/');
     })
 });
