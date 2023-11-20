@@ -1,5 +1,5 @@
 import { getPosts } from '@/server/database/repository/post';
-import { ProfileView } from '@/app/post-view';
+import { ProfileView } from '@/components/post-view';
 import { PostCreator } from '@/components/post-creator';
 
 export default async function Home() {
