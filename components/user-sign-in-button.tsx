@@ -41,9 +41,11 @@ export const UserSignInButton: FC = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>
-              <a href="https://accounts.jakubtuzar.com/user" className="hover:cursor-default">Profile</a>
-            </DropdownMenuItem>
+            <a href="https://accounts.jakubtuzar.com/user" className="hover:cursor-default">
+              <DropdownMenuItem>
+                <span>Profile</span>
+              </DropdownMenuItem>
+            </a>
             <SignOutButton>
               <DropdownMenuItem>
                 <span>Sign Out</span>
