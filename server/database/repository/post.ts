@@ -29,22 +29,27 @@ export async function getPosts() {
 
   return posts.map((postDb) => {
     const post = postDb as SelectPost;
-    const author = users.find((user) => user.id === post.authorId);
-    if (!author) throw new Error('Author for post not found');
+    const authorClerkObject = users.find((user) => user.id === post.authorId);
+    if (!authorClerkObject) {
+      console.log('author not found and was probably deleted');
+    }
+
+    const author = {
+      username: authorClerkObject?.username ?? 'unknown',
+      profileImageUrl: authorClerkObject?.imageUrl ?? ''
+    };
+
     return {
       post: {
         id: post.id,
         createdAt: post.createdAt,
         content: post.content
       },
-      author: {
-        username: author.username,
-        profileImageUrl: author.imageUrl
-      }
+      author
     } as PostWithAuthor;
   });
 }
 
 export async function createPost(content: string, authorId: string) {
-  await db.insert(post).values({content: content, authorId: authorId});
+  await db.insert(post).values({ content: content, authorId: authorId });
 }
