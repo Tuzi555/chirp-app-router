@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## What is Chirp
 
-## Getting Started
+Chirp is a hobby project based on tutorial by [t3dotgg](https://github.com/t3dotgg) taken further.
 
-First, run the development server:
+In the tutorial Theo shows hot to build a Twitter clone using Next.js (pages router) and other
+technologies. With introduction of Next.js 13 and its App router, I decided to build it again from
+ground up using the App router.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+It is still a work in progress but the core functionality is there.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can find the demo here:  [https://chirp.jakubtuzar.com](https://chirp.jakubtuzar.com)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* [Next.js](https://nextjs.org/) - meta framework for React
+* [tRPC](https://trpc.io/) - library for easy remote procedure calls which eliminates the need for manual REST API interface creation and ensures type-safety on both backend and frontend side
+* [drizzle](https://orm.drizzle.team/) - lightweight ORM enabling you to generate sql queries with its SQL query builder and also execute raw SQL queries
+* [Tailwind CSS](https://tailwindcss.com/) - utility-first CSS framework
+* [shadcn/ui](https://ui.shadcn.com/) - copy-paste component library with great style, built in accessibility and fully customizable
+* [Neon](https://neon.tech/) - serverless PostgreSQL database provider
+* [Clerk](https://clerk.dev/) - hosted auth service with great integration with Next.js
+* [Vercel](https://vercel.com/) - hosting platform for Next.js apps
