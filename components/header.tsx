@@ -1,4 +1,3 @@
-import { DarkModeToggle } from '@/components/dark-mode-toggle';
 import { UserSignInButton } from '@/components/user-sign-in-button';
 
 export const Header = () => {
@@ -7,7 +6,6 @@ export const Header = () => {
       <div className="flex items-center justify-between space-x-3 px-4 md:mx-12 lg:mx-36 xl:mx-48 2xl:mx-64">
         <UserSignInButton />
         <div className="flex flex-row gap-3">
-          <DarkModeToggle />
           <a aria-label="Link to site author's github profile" href="https://github.com/Tuzi555/chirp-app-router">
             <svg width="44" height="44" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" className="fill-primary">
               <path
