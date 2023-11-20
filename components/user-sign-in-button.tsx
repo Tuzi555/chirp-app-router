@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton, useSignIn, useUser } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, SignOutButton, useUser } from '@clerk/nextjs';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -16,7 +16,7 @@ export const UserSignInButton: FC = () => {
   const { isLoaded, user } = useUser();
   if (!isLoaded) {
     return (
-      <div className="flex flex-row items-center gap-3 border rounded-md p-1">
+      <div className="flex flex-row items-center gap-3 rounded-md border p-1">
         <Skeleton className="h-8 w-8 rounded-full" />
         <Skeleton className="h-4 w-28" />
       </div>
@@ -42,7 +42,9 @@ export const UserSignInButton: FC = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>
-              <SignOutButton />
+              <SignOutButton>
+                <p>Sign Out</p>
+              </SignOutButton>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
