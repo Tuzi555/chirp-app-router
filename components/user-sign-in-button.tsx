@@ -41,11 +41,9 @@ export const UserSignInButton: FC = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>
-              <SignOutButton>
-                <p>Sign Out</p>
-              </SignOutButton>
-            </DropdownMenuItem>
+            <SignOutButton>
+              <DropdownMenuItem />
+            </SignOutButton>
           </DropdownMenuContent>
         </DropdownMenu>
       </SignedIn>
