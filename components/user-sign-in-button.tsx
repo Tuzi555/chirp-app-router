@@ -42,7 +42,9 @@ export const UserSignInButton: FC = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <SignOutButton>
-              <DropdownMenuItem />
+              <DropdownMenuItem>
+                <span>Sign Out</span>
+              </DropdownMenuItem>
             </SignOutButton>
           </DropdownMenuContent>
         </DropdownMenu>
