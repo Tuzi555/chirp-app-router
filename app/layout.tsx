@@ -4,8 +4,6 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { clsx } from 'clsx';
-import { TRPCReactProvider } from '@/providers/trpc';
-import { cookies } from 'next/headers';
 import { Toaster } from 'react-hot-toast';
 import { GeistSans } from 'geist/font/sans';
 
@@ -25,13 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </head>
         <body className={clsx(GeistSans.className, 'flex h-screen flex-col justify-center')}>
-          <TRPCReactProvider cookies={cookies().toString()}>
-            <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-              <Header />
-              {children}
-              <Toaster />
-            </ThemeProvider>
-          </TRPCReactProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+            <Header />
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
