@@ -26,6 +26,7 @@
     "geist": "^1.1.0",
     "lucide-react": "^0.292.0",
     "next": "14.0.3",
+    "next-safe-action": "^5.1.2",
     "next-themes": "^0.2.1",
     "postgres": "^3.4.3",
     "react": "^18",

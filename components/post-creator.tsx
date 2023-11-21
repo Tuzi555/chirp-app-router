@@ -6,25 +6,21 @@ import { SignedIn, useUser } from '@clerk/nextjs';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { api } from '@/providers/trpc';
+import { useAction } from 'next-safe-action/hook';
+import { createPost } from '@/server/actions/post';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
 
 export const PostCreator: FC = () => {
   const { user } = useUser();
   const [input, setInput] = useState('');
-  const { refresh } = useRouter();
-
-  const { mutate: createPost, isLoading: isPosting } = api.posts.createPost.useMutation({
-    onSuccess: () => {
-      setInput('');
-      refresh();
-    },
+  const { execute, status } = useAction(createPost, {
+    onSuccess: () => setInput(''),
     onError: (error) => {
-      console.log(error);
-      const errorMessage = error.data?.zodError?.fieldErrors.content;
-      if (errorMessage?.[0]) toast.error(errorMessage[0]);
-      else toast.error('Failed to post! Please try again later.');
+      if (error.validationError?.content){
+        toast.error(error.validationError.content[0]);
+        return;
+      }
+      toast.error('Failed to post! Please try again later.');
     }
   });
 
@@ -42,14 +38,14 @@ export const PostCreator: FC = () => {
               className="mr-4"
               onChange={(e) => setInput(e.target.value)}
               value={input}
-              disabled={isPosting}
+              disabled={status === 'executing'}
             />
             <Button
               size="icon"
               onClick={() => {
-                createPost({ content: input });
+                execute({ content: input });
               }}
-              disabled={input.length === 0 || isPosting}
+              disabled={input.length === 0 || status === 'executing'}
             >
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path

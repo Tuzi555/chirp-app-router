@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
 import { z } from 'zod';
-import { createPost } from '@/server/database/repository/post';
+import { insertPost } from '@/server/database/repository/post';
 
 export const postsRouter = createTRPCRouter({
   createPost: publicProcedure
@@ -15,6 +15,6 @@ export const postsRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       const authorId = ctx.userId!;
-      await createPost(input.content, authorId);
+      await insertPost(input.content, authorId);
     })
 });

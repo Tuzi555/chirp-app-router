@@ -27,6 +27,8 @@ export async function getPosts() {
 
   const [posts, users] = await Promise.all([postsPromise, usersPromise]);
 
+  console.log('users', users.map((user) => user.username))
+
   return posts.map((postDb) => {
     const post = postDb as SelectPost;
     const authorClerkObject = users.find((user) => user.id === post.authorId);
@@ -50,6 +52,6 @@ export async function getPosts() {
   });
 }
 
-export async function createPost(content: string, authorId: string) {
+export async function insertPost(content: string, authorId: string) {
   await db.insert(post).values({ content: content, authorId: authorId });
 }
