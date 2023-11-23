@@ -1,6 +1,8 @@
 import { createSafeActionClient } from 'next-safe-action';
 import { auth } from '@clerk/nextjs';
 
+export const action = createSafeActionClient();
+
 export const authAction = createSafeActionClient({
   async middleware() {
     const userId = auth().userId;
