@@ -13,7 +13,7 @@ You can find the demo here:  [https://chirp.jakubtuzar.com](https://chirp.jakubt
 ## Stack
 
 * [Next.js](https://nextjs.org/) - meta framework for React
-* [tRPC](https://trpc.io/) - library for easy remote procedure calls which eliminates the need for manual REST API interface creation and ensures type-safety on both backend and frontend side
+* [next-safe-action](https://next-safe-action.dev/) - library for easy creation of type-safe server actions
 * [drizzle](https://orm.drizzle.team/) - lightweight ORM enabling you to generate sql queries with its SQL query builder and also execute raw SQL queries
 * [Tailwind CSS](https://tailwindcss.com/) - utility-first CSS framework
 * [shadcn/ui](https://ui.shadcn.com/) - copy-paste component library with great style, built in accessibility and fully customizable
